@@ -7,7 +7,7 @@ Easy-to-use GitHub Action to use [Wrangler](https://developers.cloudflare.com/wo
 The action now defaults to **Wrangler v4**. If you need to stay on Wrangler v3, you can pin the version explicitly:
 
 ```yaml
-- uses: cloudflare/wrangler-action@v3
+- uses: cloudflare/wrangler-action@v4
   with:
     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
     wranglerVersion: "3.90.0"
@@ -17,7 +17,7 @@ The action now defaults to **Wrangler v4**. If you need to stay on Wrangler v3, 
 
 - Wrangler v1 is no longer supported.
 - Global API key & Email Auth no longer supported
-- Action version syntax is newly supported. This means e.g. `uses: cloudflare/wrangler-action@v3`, `uses: cloudflare/wrangler-action@v3.x`, and `uses: cloudflare/wrangler-action@v3.x.x` are all now valid syntax. Previously supported syntax e.g. `uses: cloudflare/wrangler-action@3.x.x` is no longer supported -- the prefix `v` is now necessary.
+- Action version syntax is newly supported. This means e.g. `uses: cloudflare/wrangler-action@v4`, `uses: cloudflare/wrangler-action@v4.x`, and `uses: cloudflare/wrangler-action@v4.x.x` are all now valid syntax. Previously supported syntax e.g. `uses: cloudflare/wrangler-action@3.x.x` is no longer supported -- the prefix `v` is now necessary.
 
 [Refer to Changelog for more information](CHANGELOG.md).
 
@@ -40,7 +40,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Deploy
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 ```
@@ -56,7 +56,7 @@ jobs:
   deploy:
     name: Deploy
     steps:
-      uses: cloudflare/wrangler-action@v3
+      uses: cloudflare/wrangler-action@v4
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 ```
@@ -69,7 +69,7 @@ You can pass `wranglerVersion` to install a specific version of Wrangler from NP
 jobs:
   deploy:
     steps:
-      uses: cloudflare/wrangler-action@v3
+      uses: cloudflare/wrangler-action@v4
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         wranglerVersion: "4"
@@ -83,7 +83,7 @@ Optionally, you can also pass a `workingDirectory` key to the action. This will 
 jobs:
   deploy:
     steps:
-      uses: cloudflare/wrangler-action@v3
+      uses: cloudflare/wrangler-action@v4
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         workingDirectory: "subfoldername"
@@ -95,7 +95,7 @@ jobs:
 jobs:
   deploy:
     steps:
-      uses: cloudflare/wrangler-action@v3
+      uses: cloudflare/wrangler-action@v4
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         environment: production
@@ -113,7 +113,7 @@ If you need to run additional shell commands before or after your command, you c
 jobs:
   deploy:
     steps:
-      uses: cloudflare/wrangler-action@v3
+      uses: cloudflare/wrangler-action@v4
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         preCommands: echo "*** pre command ***"
@@ -129,7 +129,7 @@ You can use the `command` option to do specific actions such as running `wrangle
 jobs:
   deploy:
     steps:
-      uses: cloudflare/wrangler-action@v3
+      uses: cloudflare/wrangler-action@v4
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         command: whoami
@@ -141,7 +141,7 @@ You can also add a command that spans multiple lines:
 jobs:
   deploy:
     steps:
-      uses: cloudflare/wrangler-action@v3
+      uses: cloudflare/wrangler-action@v4
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         command: |
@@ -168,7 +168,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Deploy
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 ```
@@ -192,7 +192,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Deploy
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -217,7 +217,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Deploy app
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 ```
@@ -243,7 +243,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Deploy app
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           command: deploy --env ${{ github.event.inputs.environment }}
@@ -263,7 +263,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Upload Worker Version
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -277,7 +277,7 @@ jobs:
 There is an environment parameter that can be set within the workflow to enable this. Example:
 
 ```yaml
-- uses: cloudflare/wrangler-action@v3
+- uses: cloudflare/wrangler-action@v4
   with:
     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
     command: deploy --env production
@@ -295,7 +295,7 @@ More advanced workflows may need to parse the resulting output of Wrangler comma
 ```yaml
 - name: Deploy
   id: deploy
-  uses: cloudflare/wrangler-action@v3
+  uses: cloudflare/wrangler-action@v4
   with:
     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
     accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -318,7 +318,7 @@ If you are executing a Wrangler command that results in either a Workers or Page
 ```yaml
 - name: Deploy
   id: deploy
-  uses: cloudflare/wrangler-action@v3
+  uses: cloudflare/wrangler-action@v4
   with:
     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
     accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -363,7 +363,7 @@ If you need to use a specific package manager for your application, you can set 
 jobs:
   deploy:
     steps:
-      uses: cloudflare/wrangler-action@v3
+      uses: cloudflare/wrangler-action@v4
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         packageManager: pnpm
@@ -389,7 +389,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Deploy app
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
